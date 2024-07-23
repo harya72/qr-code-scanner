@@ -14,7 +14,7 @@ const DashboardScreen = () => {
   };
   return (
     <View style={styles.container}>
-      <Text>DashboardScreen</Text>
+      <Text>Dashboard</Text>
       <Button title="Logout" onPress={Logout} />
     </View>
   );
