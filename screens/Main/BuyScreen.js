@@ -4,7 +4,7 @@ import React from "react";
 const BuyScreen = () => {
   return (
     <View style={styles.container}>
-      <Text>Buy Items</Text>
+      <Text>Buy Items Screen</Text>
     </View>
   );
 };

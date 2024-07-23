@@ -10,22 +10,12 @@ import Icon from "react-native-vector-icons/MaterialIcons";
 const Tab = createBottomTabNavigator();
 
 const BottomTabsNavigator = (props) => {
-  console.log(props.route.params.params);
   return (
     <Tab.Navigator
-      initialRouteName={
-        props.route && props.route.params && props.route.params
-          ? props.route.params.params
-          : "Dashboard"
-      }
+      initialRouteName="Dashboard"
       screenOptions={{
         headerShown: false,
-        headerTitleAlign:'center',
-       
-          headerTitleStyle: {
-            fontSize: 20,
-          },
-        }}
+      }}
     >
       <Tab.Screen
         name="Dashboard"
