@@ -1,43 +1,41 @@
-import React, { useState } from 'react';
-import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { CameraView, useCameraPermissions } from 'expo-camera';
+import React, { useState } from "react";
+import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { CameraView, useCameraPermissions } from "expo-camera";
 
 export default function QRReaderScreen() {
-  const [facing, setFacing] = useState('back');
+  const [facing, setFacing] = useState("back");
   const [permission, requestPermission] = useCameraPermissions();
   const [scanned, setScanned] = useState(false);
   const [cameraActive, setCameraActive] = useState(false);
 
   if (!permission) {
-    // Camera permissions are still loading.
     return <View />;
   }
 
   if (!permission.granted) {
-    // Camera permissions are not granted yet.
     return (
-      <View style={styles.container}>
-        <Text style={styles.message}>We need your permission to show the camera</Text>
+      <View style={styles.permissionContainer}>
+        <Text>We need your permission to show the camera</Text>
         <Button onPress={requestPermission} title="Grant Permission" />
       </View>
     );
   }
 
-  function toggleCameraFacing() {
-    setFacing(current => (current === 'back' ? 'front' : 'back'));
-  }
+  const toggleCameraFacing = () => {
+    setFacing((current) => (current === "back" ? "front" : "back"));
+  };
 
-  function handleBarCodeScanned({ type, data }) {
+  const handleBarCodeScanned = ({ type, data }) => {
     if (!scanned) {
       setScanned(true);
       alert(`Bar code with type ${type} and data ${data} has been scanned!`);
     }
-  }
+  };
 
-  function startCamera() {
+  const startCamera = () => {
     setCameraActive(true);
     setScanned(false);
-  }
+  };
 
   return (
     <View style={styles.container}>
@@ -50,7 +48,6 @@ export default function QRReaderScreen() {
           style={styles.cameraStyle}
           facing={facing}
         />
-      
       ) : (
         <View style={styles.startContainer}>
           <Button title="Start Camera" onPress={startCamera} />
@@ -62,7 +59,10 @@ export default function QRReaderScreen() {
             <Text style={styles.text}>Flip Camera</Text>
           </TouchableOpacity>
           {scanned && (
-            <Button title="Tap to Scan Again" onPress={() => setScanned(false)} />
+            <Button
+              title="Tap to Scan Again"
+              onPress={() => setScanned(false)}
+            />
           )}
         </View>
       )}
@@ -73,30 +73,37 @@ export default function QRReaderScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'column',
+    flexDirection: "column",
+  },
+  permissionContainer: {
+    flex: 1,
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 8,
   },
   cameraStyle: {
     flex: 1,
   },
   startContainer: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   controls: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
     padding: 20,
   },
   button: {
     margin: 10,
     padding: 10,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
     borderRadius: 5,
   },
   text: {
     fontSize: 18,
-    color: 'white',
+    color: "white",
   },
 });

@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { View, TextInput, Button, StyleSheet,Text } from 'react-native';
-import { useAuth } from '../context/AuthContext';
+import React, { useState } from "react";
+import { View, TextInput, Button, StyleSheet, Text } from "react-native";
+import { useAuth } from "../../context/AuthContext";
 
-const LoginScreen = ({navigation}) => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+const LoginScreen = ({ navigation }) => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const { login } = useAuth();
 
   const handleLogin = () => {
-    const token = 'mock-token';
+    const token = "mock-token";
     login(token);
   };
 
@@ -28,7 +28,10 @@ const LoginScreen = ({navigation}) => {
         secureTextEntry
       />
       <Button title="Login" onPress={handleLogin} />
-      <Text onPress={()=>navigation.navigate('Register')}>Don't have an account? <Text style={{color:'skyblue', fontWeight:"800"}}>Create one</Text></Text>
+      <Text onPress={() => navigation.navigate("Register")}>
+        Don't have an account?{" "}
+        <Text style={{ color: "skyblue", fontWeight: "800" }}>Create one</Text>
+      </Text>
     </View>
   );
 };
@@ -36,12 +39,13 @@ const LoginScreen = ({navigation}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: "center",
     padding: 16,
+    gap:16
   },
   input: {
     height: 40,
-    borderColor: 'gray',
+    borderColor: "gray",
     borderWidth: 1,
     marginBottom: 12,
     paddingHorizontal: 8,

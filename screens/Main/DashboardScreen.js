@@ -13,7 +13,7 @@ const DashboardScreen = () => {
     }
   };
   return (
-    <View>
+    <View style={styles.container}>
       <Text>DashboardScreen</Text>
       <Button title="Logout" onPress={Logout} />
     </View>
@@ -22,4 +22,11 @@ const DashboardScreen = () => {
 
 export default DashboardScreen;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    justifyContent: "center",
+    alignItems: "center",
+    flex: 1,
+    gap:8
+  },
+});

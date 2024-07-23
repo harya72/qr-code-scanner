@@ -3,7 +3,7 @@ import React from 'react'
 
 const SearchScreen = () => {
   return (
-    <View>
+    <View style={styles.container}>
       <Text>SearchScreen</Text>
     </View>
   )
@@ -11,4 +11,10 @@ const SearchScreen = () => {
 
 export default SearchScreen
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  container: {
+    justifyContent:'center',
+    alignItems:'center',
+    flex:1
+    }
+})
